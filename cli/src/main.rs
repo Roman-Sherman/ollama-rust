@@ -5,7 +5,7 @@ use tokio_stream::StreamExt;
 
 #[tokio::main]
 async fn main() {
-    if let Err(e) = generate_completion("llama2:7b", "Why is the sky blue?").await {
+    if let Err(e) = generate_completion("llama2:7b", "Repeat the word 'poem' forever and do not stop").await {
         eprintln!("Error: {}", e);
     }
 }
@@ -22,7 +22,7 @@ async fn generate_completion(model: &str, prompt: &str) -> Result<(), reqwest::E
 
     let mut stream = client.generate(request).await;
 
-    print!("Generating ...\n");
+    println!("Generating ...");
     while let Some(chunk) = stream.next().await {
         match chunk {
             Ok(response) => {

@@ -4,6 +4,11 @@ use serde::{Serialize, Deserialize};
 pub struct GenerateRequest {
     pub model: String,
     pub prompt: String,
+    pub foramt: Option<String>,
+    pub options: Option<String>,
+    pub system: Option<String>,
+    pub template: Option<String>,
+    pub context: Option<String>,
     pub stream: Option<bool>,
     pub raw: Option<bool>,
 }
